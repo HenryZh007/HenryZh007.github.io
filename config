@@ -1,0 +1,42 @@
+# HenryZh007
+Host github_henry
+    HostName github.com
+    User git
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_ed25519_henry
+
+Host 141.212.82.43
+  HostName 141.212.82.43
+  User hengyizh
+  IdentityFile /Users/henry/.ssh/HDR_server
+
+Host 172.20.10.2
+  HostName 172.20.10.2
+  User ldc
+  Port 22
+  IdentityFile /Users/henry/.ssh/id_rsa_sjtuLab
+
+Host 202.120.39.14
+  HostName 202.120.39.14
+  User zhy
+  Port 9010
+  IdentityFile /Users/henry/.ssh/id_rsa_sjtuLab
+
+Host oncampus-course.engin.umich.edu
+  HostName oncampus-course.engin.umich.edu
+  User hengyizh
+  ServerAliveInterval 60
+  ServerAliveCountMax 30
+
+Host login-course.engin.umich.edu
+  HostName login-course.engin.umich.edu
+  User hengyizh
+  ServerAliveInterval 60
+  ServerAliveCountMax 30
+
+Host SALLA6000
+  HostName 202.120.39.14
+  User zhy
+  Port 9005
+  IdentityFile /Users/henry/.ssh/id_rsa_sjtuLab
