@@ -23,7 +23,7 @@
                   Hengyi (Henry) Zhou
                 </p>
                 <p>
-                    I am a junior student with a dual-degree program in Mechanical Engineering at Shanghai Jiao Tong University and Computer Engineering at the University of Michigan. I once worked in <a href="https://www.cs.sjtu.edu.cn/sail/index.html">SAIL Lab</a> led by Professor <a href="https://cs.sjtu.edu.cn/~lichao/">Chao Li</a> at SJTU. After arriving at the University of Michigan, I joined the <a href="https://soft.robotics.umich.edu/">Hybrid Dynamic Robotics Lab</a>  led by Professor <a href="https://scholar.google.com/citations?user=MNKU_WcAAAAJ&hl=zh-CN">Xiaonan (Sean) Huang</a>.
+                    I am a junior student with a dual-degree program in Mechanical Engineering at Shanghai Jiao Tong University and Computer Engineering at the University of Michigan. I once worked in <a href="https://www.cs.sjtu.edu.cn/sail/index.html">SAIL Lab</a> led by Professor <a href="https://cs.sjtu.edu.cn/~lichao/">Chao Li</a> at SJTU. After arriving at the University of Michigan, I joined the <a href="https://soft.robotics.umich.edu/">Hybrid Dynamic Robotics Lab</a>  led by Professor <a href="https://scholar.google.com/citations?user=MNKU_WcAAAAJ&hl=en&oi=ao">Xiaonan (Sean) Huang</a>.
                 </p>
 
                 <p>
@@ -58,47 +58,64 @@
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
 <!-- Neural Control -->
-<tr onmouseout="zipmap_stop()" onmouseover="zipmap_start()" bgcolor="#ffffd0">
+<tr onmouseout="nnc_stop()" onmouseover="nnc_start()" bgcolor="#ffffd0">
   <td style="padding:16px;width:20%;vertical-align:middle">
-    <div class="one">
-      <div class="two" id='zipmap_image'><video  width=100% height=100% muted autoplay loop>
-      <source src="images/zipmap.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video></div>
-      <img src='images/zipmap.jpg' width="160">
+    <div class="one" style="width:170px;height:170px;">
+      <div class="two" id='nnc_image_wrapper' style="width:170px;height:170px;">
+        <img id="nnc_image" src="images/neural_control/t2c1_sample.gif" width="170" alt="Neural Control animation">
+      </div>
+      <img src='images/neural_control/neural_control_1.png' width="170" alt="Neural Control preview" style="margin-top: 22px;">
     </div>
     <script type="text/javascript">
-      function zipmap_start() {
-        document.getElementById('zipmap_image').style.opacity = "1";
+      let nnc_timer = null;
+      const nnc_gifs = [
+        { src: 'images/neural_control/t2c1_sample.gif', duration: 1200 },
+        { src: 'images/neural_control/t2c2_sample.gif', duration: 1500 },
+        { src: 'images/neural_control/t2c3_sample.gif', duration: 1500 },
+        { src: 'images/neural_control/t3_sample.gif', duration: 1500 }
+      ];
+
+      function nnc_play(index) {
+        const image = document.getElementById('nnc_image');
+        const frame = nnc_gifs[index];
+        image.src = frame.src + '?restart=' + Date.now();
+        document.getElementById('nnc_image_wrapper').style.opacity = "1";
+        nnc_timer = setTimeout(function() {
+          nnc_play((index + 1) % nnc_gifs.length);
+        }, frame.duration);
       }
 
-      function zipmap_stop() {
-        document.getElementById('zipmap_image').style.opacity = "0";
+      function nnc_start() {
+        clearTimeout(nnc_timer);
+        nnc_play(0);
       }
-      zipmap_stop()
+
+      function nnc_stop() {
+        clearTimeout(nnc_timer);
+        document.getElementById('nnc_image_wrapper').style.opacity = "0";
+      }
+      nnc_stop()
     </script>
   </td>
   <td style="padding:20px;width:75%;vertical-align:middle">
-    <a href="https://haian-jin.github.io/ZipMap/">
+    <span class="fake-link">
       <span class="papertitle">Neural Control: Adjoint Learning Through Equilibrium Constraints</span>
-    </a>
+    </span>
     <br>
-    <a href="https://haian-jin.github.io/">Haian Jin</a>,
-    <a href="https://rundiwu.github.io/">Rundi Wu</a>,
-    <a href="https://tianyuanzhang.com/">Tianyuan Zhang</a>,
-    <a href="https://ruiqigao.github.io/">Ruiqi Gao</a>, <br>
-    <strong>Jonathan T. Barron</strong>,
-    <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a>,
-    <a href="https://holynski.org/">Aleksander Hołyński</a>
+    <a href="https://scholar.google.com/citations?user=LF8G-TgAAAAJ&hl=en">Dezhong Tong</a>,
+    <a href="https://chiawenwang.github.io/">Jiawen Wang</a>,
+    <strong>Hengyi Zhou</strong>,
+    <span class="fake-link"> Yinlong Shen </span>,
+    <a href="https://scholar.google.com/citations?user=MNKU_WcAAAAJ&hl=en&oi=ao">Xiaonan Huang</a>
+    <a href="https://structures.computer/">M. Khalid Jawed</a>
     <br>
-    <em>CVPR</em>, 2026
+    In submission to <em>ICML</em>, 2026
     <br>
-    <a href="https://haian-jin.github.io/ZipMap/">project page</a> /
-    <a href="https://arxiv.org/abs/2603.04385">arXiv</a> /
-    <a href="https://github.com/Haian-Jin/ZipMap">code</a>
+    <a href="javascript:void(0)">paper to be released</a> /
+    <a href="javascript:void(0)">code to be released</a>
     <p></p>
     <p>
-		Test-time training lets you quickly compress an entire image collection into a compact model and thereby achieve linear-time 3D reconstruction.
+		Proposing Neural Control, a memory-efficient adjoint-based framework for controlling multi-stable physical systems by computing trajectory-aware gradients without unrolling equilibrium solvers, enabling robust long-horizon manipulation of deformable objects.
     </p>
   </td>
 </tr>
@@ -107,8 +124,8 @@
 <tr>
   <td style="padding:16px;width:20%;vertical-align:middle">
     <div class="stacked-images">
-      <img src="images/PCR1.png" class="img-top" alt="PCR System Overview">
-      <img src="images/PCR2.png" class="img-bottom" alt="PCR System Overview">
+      <img src="images/PCR/PCR1.png" class="img-top" alt="PCR System Overview">
+      <img src="images/PCR/PCR2.png" class="img-bottom" alt="PCR System Overview">
     </div>
   </td>
   <td style="padding:20px;width:75%;vertical-align:middle">
@@ -148,7 +165,7 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             
            
-            <tr>
+            <!-- <tr>
               <td align="center" style="padding:16px;width:20%;vertical-align:middle">
 						     <div class="colored-box" style="background-color: #fcb97d;">
 								 <h2>Micropapers</h2>
@@ -163,65 +180,33 @@
                 <br>
                 <a href="https://jonbarron.info/data/cvpr2023_llm_workshop_annotated.pdf">Scholars & Big Models: How Can Academics Adapt?</a>
               </td>
-            </tr>
+            </tr> -->
 
 
             <tr>
               <td align="center" style="padding:16px;width:20%;vertical-align:middle">
 						     <div class="colored-box" style="background-color: #aaba9e;">
-								 <h2>Recorded Talks</h2>
-								 </div>
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:center">
-                <a href="https://www.youtube.com/watch?v=hFlF33JZbA0">Radiance Fields and the Future of Generative Media, 2025</a><br>				  
-                <a href="https://www.youtube.com/watch?v=h9vq_65eDas">View Dependent Podcast, 2024</a><br>
-                <a href="https://www.youtube.com/watch?v=4tDhYsFuEqo">Bay Area Robotics Symposium, 2023
-</a><br>
-                <a href="https://youtu.be/TvWkwDYtBP4?t=7604">EGSR Keynote, 2021</a><br>
-				<a href="https://www.youtube.com/watch?v=nRyOzHpcr4Q">TUM AI Lecture Series, 2020</a><br>
-				<a href="https://www.youtube.com/watch?v=HfJpQCBTqZs">Vision & Graphics Seminar at MIT, 2020</a>
-              </td>
-            </tr>
-
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-						     <div class="colored-box" style="background-color: #c6b89e;">
-								 <h2>Academic Service</h2>
-								 </div>
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:center">
-                <a href="https://iccv.thecvf.com/">Lead Area Chair, ICCV 2025</a>
-                <br>
-                <a href="https://cvpr.thecvf.com/Conferences/2025/Organizers">Lead Area Chair, CVPR 2025</a>
-                <br>
-                <a href="https://cvpr.thecvf.com/Conferences/2024/Organizers">Area Chair, CVPR 2024</a>
-                <br>
-                <a href="https://cvpr2023.thecvf.com/Conferences/2023/Organizers">Demo Chair, CVPR 2023</a>
-                <br>
-                <a href="https://cvpr2022.thecvf.com/area-chairs">Area Chair, CVPR 2022</a>
-                <br>
-                <a href="http://cvpr2021.thecvf.com/area-chairs">Area Chair & Award Committee Member, CVPR 2021</a>
-                <br>
-                <a href="http://cvpr2019.thecvf.com/area_chairs">Area Chair, CVPR 2019</a>
-                <br>
-                <a href="http://cvpr2018.thecvf.com/organizers/area_chairs">Area Chair, CVPR 2018</a>
-              </td>
-            </tr>
-						
-						
-           
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-						     <div class="colored-box" style="background-color: #edd892;">
 								 <h2>Teaching</h2>
 								 </div>
               </td>
               <td style="padding:8px;width:80%;vertical-align:center">
-                <a href="http://inst.eecs.berkeley.edu/~cs188/sp11/announcements.html">Graduate Student Instructor, CS188 Spring 2011</a>
+                Grader, EECS216 (Intro to Signals and Systems) WN26 at Umich <br>
+                Teaching Assistant, ENGR101 (Intro to Engineering) SU25 at SJTU <br>
+              </td>
+            </tr>
+           
+            <tr>
+              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+						     <div class="colored-box" style="background-color: #edd892;">
+								 <h2>Award</h2>
+								 </div>
+              </td>
+              <td style="padding:8px;width:80%;vertical-align:center">
+                <a href="https://scholarships.engin.umich.edu/featured/tonywang/">Wang Chu Chien-Wen Summer Research Award 2026 from Umich</a>
                 <br>
-                <a href="http://inst.eecs.berkeley.edu/~cs188/fa10/announcements.html">Graduate Student Instructor, CS188 Fall 2010</a>
+                <a href="http://inst.eecs.berkeley.edu/~cs188/fa10/announcements.html">Jackson and Muriel Lum Scholarship & Fellowship 2025 from Umich</a>
                 <br>
-                <a href="http://aima.cs.berkeley.edu/">Figures, "Artificial Intelligence: A Modern Approach", 3rd Edition</a>
+                <a href="https://gc.sjtu.edu.cn/category/giving/yu-liming-scholarship-fund/">Yu Liming Scholarship 2025 from SJTU</a>
               </td>
             </tr>
             
@@ -231,7 +216,7 @@
               <td style="padding:0px">
                 <br>
                 <p style="text-align:right;font-size:small;">
-                  Feel free to steal this website's <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. <strong>Do not</strong> scrape the HTML from this page itself, as it includes analytics tags that you do not want on your own website &mdash; use the github code instead. Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
+                  Thanks to <a href="https://github.com/jonbarron">Jon Barron</a> for the <a href="https://github.com/jonbarron/jonbarron_website">website template</a>.
                 </p>
               </td>
             </tr>
