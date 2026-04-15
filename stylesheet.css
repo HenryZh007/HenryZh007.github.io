@@ -140,3 +140,28 @@ span.highlight {
     display: inline-block;
     border-radius: 10px;
 }
+
+.fake-link {
+  color: #1772d0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fake-link:hover {
+  color: #f09228;
+}
+
+.stacked-images {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.img-top {
+  width: 150px;
+}
+
+.img-bottom {
+  width: 150px;
+}
