@@ -37,7 +37,8 @@
                   <a href="mailto:hengyizh@umich.edu">Email</a> &nbsp;/&nbsp;
                   <a href="data/Resume.pdf">CV</a> &nbsp;/&nbsp;
                   <!-- <a href="https://scholar.google.com/citations?hl=en&user=jktWnL8AAAAJ">Scholar</a> &nbsp;/&nbsp; -->
-                  <a href="https://github.com/HenryZh007/">Github</a>
+                  <a href="https://github.com/HenryZh007/">Github</a>&nbsp;/&nbsp;
+                  <a href="https://www.linkedin.com/in/hengyi-zhou-4225a2381/">Linkdin</a>
                 </p>
               </td>
               <td style="padding:2.5%;width:37%;max-width:37%">
@@ -57,8 +58,76 @@
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-<!-- 1. Neural Control -->
-<tr onmouseout="nnc_stop()" onmouseover="nnc_start()" bgcolor="#ffffd0">
+<!-- 1. SCNC -->
+<tr onmouseleave="scnc_stop()" onmouseenter="scnc_start()" bgcolor="#ffffd0">
+  <td style="padding:16px;width:20%;vertical-align:middle">
+    <div class="one" style="width:150px;height:auto;">
+      <div class="two" id="scnc_video_wrapper" style="width:150px;height:100%;">
+        <video id="scnc_video" style="width:100%;height:100%;object-fit:contain;background:#ffffd0;" muted playsinline preload="metadata"></video>
+      </div>
+      <div class="stacked-images">
+        <img src='images/SCNC/teaser.png' class="img-top" alt="SCNC teaser">
+        <img src='images/SCNC/pipeline.png' class="img-bottom" alt="SCNC pipeline">
+      </div>
+    </div>
+    <script type="text/javascript">
+      const scnc_videos = [
+        'images/SCNC/tracked_beam_n20_-0.05_0.03_v2.0.mp4',
+        'images/SCNC/tracked_beam_n20_0.05_0.03_v2.0.mp4',
+        'images/SCNC/tracked_tape_n20_0.05_0.039_v1.0.mp4',
+        'images/SCNC/tracked_tape_n20_0.05_0.039_v2.0.mp4',
+        'images/SCNC/tracked_tape_n31_0.15_0.05_v1.0.mp4',
+        'images/SCNC/tracked_tape_n31_0.15_0.05_v2.0.mp4',
+        'images/SCNC/tracked_tube_n10_0.05_0.02_v1.0.mp4',
+        'images/SCNC/tracked_tube_n10_0.05_0.02_v2.0.mp4',
+        'images/SCNC/tracked_tube_n31_0.05_0.06_v1.0.mp4',
+        'images/SCNC/tracked_tube_n31_0.05_0.06_v2.0.mp4'
+      ];
+      let scnc_index = 0;
+
+      function scnc_play(index) {
+        const video = document.getElementById('scnc_video');
+        scnc_index = index;
+        video.src = scnc_videos[index];
+        document.getElementById('scnc_video_wrapper').style.opacity = "1";
+        video.play();
+      }
+
+      document.getElementById('scnc_video').addEventListener('ended', function() {
+        scnc_play((scnc_index + 1) % scnc_videos.length);
+      });
+
+      function scnc_start() {
+        scnc_play(0);
+      }
+
+      function scnc_stop() {
+        const video = document.getElementById('scnc_video');
+        video.pause();
+        document.getElementById('scnc_video_wrapper').style.opacity = "0";
+      }
+      scnc_stop()
+    </script>
+  </td>
+  <td style="padding:20px;width:75%;vertical-align:middle">
+    <span class="fake-link">
+      <span class="papertitle"><!-- TODO: 论文标题 --></span>
+    </span>
+    <br>
+    <!-- TODO: 作者列表 -->
+    <br>
+    <!-- TODO: 会议/期刊信息 -->
+    <br>
+    <!-- TODO: 链接 (arXiv / Github 等) -->
+    <p></p>
+    <p>
+    <!-- TODO: 论文简介 -->
+    </p>
+  </td>
+</tr>
+
+<!-- 2. Neural Control -->
+<tr onmouseout="nnc_stop()" onmouseover="nnc_start()">
   <td style="padding:16px;width:20%;vertical-align:middle">
     <div class="one" style="width:170px;height:170px;">
       <div class="two" id='nnc_image_wrapper' style="width:170px;height:170px;">
