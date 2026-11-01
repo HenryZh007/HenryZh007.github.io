@@ -58,12 +58,71 @@
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+<!-- RoboSoft 2027 -->
+<tr onmouseleave="robosoft_stop()" onmouseenter="robosoft_start()" bgcolor="#ffffd0">
+  <td style="padding:16px;width:20%;vertical-align:middle">
+    <div class="one" style="width:150px;height:185px;">
+      <img src="images/RoboSoft2027/fab-geo.png" width="150" alt="Kresling cell fabrication, magnetic angular sensing assembly, and geometric design" style="position:absolute;top:50%;transform:translateY(-50%);height:auto;">
+      <div class="two" id="robosoft_video_wrapper" style="width:150px;height:185px;opacity:0;pointer-events:none;">
+        <video id="robosoft_video" style="width:100%;height:100%;object-fit:contain;background:#ffffd0;" muted loop playsinline controls preload="metadata" aria-label="Kresling cell contact force sensing demonstration">
+          <source src="images/RoboSoft2027/presentation-5x.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const robosoft_video = document.getElementById('robosoft_video');
+      const robosoft_wrapper = document.getElementById('robosoft_video_wrapper');
+      let robosoft_active = false;
+
+      robosoft_video.addEventListener('playing', function() {
+        if (robosoft_active) {
+          robosoft_wrapper.style.opacity = "1";
+          robosoft_wrapper.style.pointerEvents = "auto";
+        }
+      });
+
+      function robosoft_start() {
+        robosoft_active = true;
+        robosoft_video.muted = true;
+        robosoft_video.play().catch(function() {
+          if (robosoft_video.paused) {
+            robosoft_wrapper.style.opacity = "0";
+            robosoft_wrapper.style.pointerEvents = "none";
+          }
+        });
+      }
+
+      function robosoft_stop() {
+        robosoft_active = false;
+        robosoft_video.pause();
+        robosoft_wrapper.style.opacity = "0";
+        robosoft_wrapper.style.pointerEvents = "none";
+      }
+    </script>
+  </td>
+  <td style="padding:20px;width:75%;vertical-align:middle">
+    <span class="papertitle fake-link">History-Aware Force Sensing and Tunable Stiffness in a Pneumatic Kresling Origami Cell</span>
+    <br>
+    <strong>Hengyi Zhou</strong>,
+    <span class="fake-link">Jiaqi Wang</span>,
+    <span class="fake-link">Yilin Ma</span>,
+    <a href="https://scholar.google.com/citations?user=LF8G-TgAAAAJ&hl=en">Dezhong Tong</a>,
+    <a href="https://scholar.google.com/citations?user=MNKU_WcAAAAJ&hl=en&oi=ao">Xiaonan Huang</a>
+    <br>
+    Submitted to <em>RoboSoft</em> 2027
+    <br>
+    <p>
+      A 3D-printed pneumatic Kresling origami cell combines magnetic angular sensing with a multiscale GRU to estimate history-dependent contact forces, enabling pressure-tunable stiffness and self-sensing actuation with energy-based pressure compensation.
+    </p>
+  </td>
+</tr>
+
 <!-- 1. SCNC -->
-<tr onmouseleave="scnc_stop()" onmouseenter="scnc_start()" bgcolor="#ffffd0">
+<tr onmouseleave="scnc_stop()" onmouseenter="scnc_start()">
   <td style="padding:16px;width:20%;vertical-align:middle">
     <div class="one" style="width:150px;height:auto;">
       <div class="two" id="scnc_video_wrapper" style="width:150px;height:100%;">
-        <video id="scnc_video" style="width:100%;height:100%;object-fit:contain;background:#ffffd0;" muted playsinline preload="metadata"></video>
+        <video id="scnc_video" style="width:100%;height:100%;object-fit:contain;background:white;" muted playsinline preload="metadata"></video>
       </div>
       <div class="stacked-images">
         <img src='images/SCNC/teaser.png' class="img-top" alt="SCNC teaser">
